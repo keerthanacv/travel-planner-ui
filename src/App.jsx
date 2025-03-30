@@ -6,6 +6,7 @@ import { NoAuth } from './components/NoAuth/NoAuth'
 import {SignUp} from './components/NoAuth/SignUp/SignUp'
 import {Auth} from './components/Auth/Auth'
 import {Places} from './components/Auth/Places/Places'
+import PlaceDetails  from './components/Auth/Places/PlaceDetails/PlaceDetails'
 
 function App() {
    const router = createBrowserRouter([
@@ -22,7 +23,8 @@ function App() {
       element : <Auth/>,
       children:[
         {path:'home',element:<Home/>},
-        {path:'places',element:<Places/>}
+        {path:'places',element:<Places/>},
+        {path:'places/:placeId',element:<PlaceDetails/>} // : placeId is dynamic(:)
       ]
     }
    ])

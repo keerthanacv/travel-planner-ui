@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {useSelector} from 'react-redux'
-import axios from 'axios'
+import axiosInstance from '../../../services/axiosInstance'
 
 export const Home =  () => {
     const accessToken = useSelector((state) => state.auth.accessToken);
@@ -8,16 +8,9 @@ export const Home =  () => {
     useEffect(()=>{
     const fetchHomePageDetails = async ()=>{
         try{
-            const response = await axios.get("http://localhost:8080/home",
-                {
-                    headers:
-                    {
-                        "Authorization" : `Bearer ${accessToken}`,
-                        "Content-Type": "application/json"
-                    }
-                }
-            );
-            setHomePageData(response.data);
+            const response = await axiosInstance.get("/home");
+            console.log(JSON.stringify(response));
+            setHomePageData(response);
         }
         catch(error)
         {
@@ -26,7 +19,7 @@ export const Home =  () => {
         }
     
     }
-    fetchHomePageDetails
+    fetchHomePageDetails()
 },[accessToken])
   return (
    

@@ -1,7 +1,6 @@
 import React from 'react'
 import Login from './Login/Login';
 import { useLocation } from 'react-router-dom';
-import { NavLink } from 'react-router-dom';
 import { SignUp } from './SignUp/SignUp';
 
 export const NoAuth = () => {

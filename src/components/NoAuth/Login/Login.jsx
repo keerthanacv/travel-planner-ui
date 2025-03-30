@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import axios from 'axios'
+// import axios from 'axios'
 import {useDispatch} from 'react-redux'
 import { authActions } from '../../../store/authSlice'
 import { NavLink,Navigate, useNavigate } from 'react-router-dom'
+import axiosInstance from '../../../services/axiosInstance'
 
 const Login = () => {
     const dispatch = useDispatch();
@@ -20,9 +21,10 @@ const Login = () => {
     const handleLoginSubmit = (event)=>{
         event.preventDefault();
         try{
-        axios.post("http://localhost:8080/login",loginData).then((response)=>
+          axiosInstance.post("/login",loginData).then((response)=>
         {
-            const accessToken = response.data.data;
+          console.log(JSON.stringify(response, null, 2));
+            const accessToken = response.data;
             console.log(accessToken+" accessToken");
             dispatch(authActions.authenticateUser({accessToken}))
         })
