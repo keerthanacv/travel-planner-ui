@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {useSelector} from 'react-redux'
 import axios from 'axios'
 
 export const Home =  () => {
     const accessToken = useSelector((state) => state.auth.accessToken);
     const [homePageData,setHomePageData] = useState();
-    const handleClick = async ()=>{
+    useEffect(()=>{
+    const fetchHomePageDetails = async ()=>{
         try{
             const response = await axios.get("http://localhost:8080/home",
                 {
@@ -25,6 +26,8 @@ export const Home =  () => {
         }
     
     }
+    fetchHomePageDetails
+},[accessToken])
   return (
    
     <>
@@ -32,7 +35,6 @@ export const Home =  () => {
 
     <div>
         <p>Home page : {homePageData}</p>
-        <button onClick={handleClick}>Go to Home page</button>
     </div>
     </>
 

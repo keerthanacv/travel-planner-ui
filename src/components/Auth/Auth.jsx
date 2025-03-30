@@ -6,24 +6,24 @@ import {useState,useEffect} from 'react'
 
 export const Auth = () => {
   const location = useLocation();
-  const [isActiveHomePage,setIsActiveHome] = useState('true');
+  const [isActiveHomePage,setIsActiveHome] = useState(true);
   useEffect(() => {
-    if(location.path === '/home')
+    if(location.pathname === '/auth/home')
     {
      setIsActiveHome(true)
     }
-    if(location.path === '/places')
+    if(location.pathname === '/auth/places')
      {
       setIsActiveHome(false)
      }
-  }, [location.path]);
+  }, [location.pathname]);
 
   return (
     
    <> 
     <div>Auth</div>
-    <button><NavLink to="home">Home</NavLink></button>
-    <button><NavLink to="places">Products</NavLink></button>
+    <button><NavLink to="/auth/home">Home</NavLink></button>
+    <button><NavLink to="/auth/places">Places</NavLink></button>
    
     <div></div>
     <div>

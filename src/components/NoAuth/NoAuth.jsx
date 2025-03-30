@@ -11,11 +11,7 @@ export const NoAuth = () => {
     <>
     <div>NoAuth</div>
     <div>
-        {location.pathname=="/login" && <Login/>}
-    
-    </div>
-    <div>
-    {location.pathname=="/signup" && <SignUp/>}
+    {location.pathname=="/signup" ? <SignUp/>:<Login/>}
 
     </div>
     </>
